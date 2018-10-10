@@ -44,3 +44,11 @@ curl -X GET http://localhost:8080/users/new
 # Get a HTML form for user modification
 curl -X GET http://localhost:8080/users/1/edit
 ```
+
+# For Developer
+
+Run all tests
+
+```
+go test github.com/cclin81922/fakerestful/cmd/fakerestful
+```
