@@ -24,7 +24,7 @@ Access user resource by curl
 
 ```
 # List all users
-curl -X GET http://localhost:8080/users
+curl -X GET http://localhost:8080/users/
 
 # Get a user
 curl -X GET http://localhost:8080/users/1
