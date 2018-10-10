@@ -5,6 +5,12 @@ import (
 	"net/http"
 )
 
+func init() {
+	for idx := range db {
+		db[idx].ID = idx + 1
+	}
+}
+
 func main() {
 	http.HandleFunc("/users/", usersAPIHandler)
 

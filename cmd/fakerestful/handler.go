@@ -24,10 +24,8 @@ func usersAPIHandler(w http.ResponseWriter, r *http.Request) {
 			}
 		} else if r.Method == http.MethodPost {
 			// Create a user
-			id := 1
-			idx := id - 1
-			db[idx].Name = r.FormValue("name")
-			fmt.Fprintln(w, "created")
+			db[0].Name = r.FormValue("name")
+			fmt.Fprintf(w, "%v", db[0])
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
@@ -43,8 +41,7 @@ func usersAPIHandler(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
 			// Get a user
 			idx := userIndex(r.URL.Path)
-			u := db[idx]
-			fmt.Fprintf(w, "%v", u)
+			fmt.Fprintf(w, "%v", db[idx])
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
@@ -63,7 +60,7 @@ func usersAPIHandler(w http.ResponseWriter, r *http.Request) {
 			// Update a user
 			idx := userIndex(r.URL.Path)
 			db[idx].Name = r.FormValue("name")
-			fmt.Fprintln(w, "updated")
+			fmt.Fprintf(w, "%v", db[idx])
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
@@ -72,7 +69,7 @@ func usersAPIHandler(w http.ResponseWriter, r *http.Request) {
 			// Delete a user
 			idx := userIndex(r.URL.Path)
 			db[idx].Name = ""
-			fmt.Fprintln(w, "deleted")
+			fmt.Fprintf(w, "%v", db[idx])
 		} else {
 			http.Error(w, "Method Not Allowed", http.StatusMethodNotAllowed)
 		}
